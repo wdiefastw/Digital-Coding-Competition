@@ -6,8 +6,8 @@ Built with **HTML, CSS, and JavaScript**. No database, external libraries, API k
 
 ## Download the project or publish the website
 
-- **For VS Code:** open [PLOTLINE-source.zip on GitHub](https://github.com/wdiefastw/-/blob/main/downloads/PLOTLINE-source.zip), then click **Download raw file** (the download-arrow button). This is the complete editable project, packaged inside one folder named **PLOTLINE**.
-- **For publishing without editing:** [download PLOTLINE-website.zip](https://github.com/wdiefastw/-/raw/refs/heads/main/downloads/PLOTLINE-website.zip). It contains the built website, all 40 cases and covers, and the writing desk.
+- **For VS Code:** open [PLOTLINE-source.zip on GitHub](https://github.com/wdiefastw/Digital-Coding-Competition/blob/main/downloads/PLOTLINE-source.zip), then click **Download raw file** (the download-arrow button). This is the complete editable project, packaged inside one folder named **PLOTLINE**.
+- **For publishing without editing:** [download PLOTLINE-website.zip](https://github.com/wdiefastw/Digital-Coding-Competition/raw/refs/heads/main/downloads/PLOTLINE-website.zip). It contains the built website, all 40 cases and covers, and the writing desk.
 
 To publish immediately, extract the website ZIP and drag the extracted folder containing `index.html` into [Netlify Drop](https://app.netlify.com/drop). Netlify supplies the live URL after upload. You can also use GitHub Pages as described below. No secret key or database is needed.
 
@@ -165,15 +165,21 @@ npm run build
 
 The included `.github/workflows/pages.yml` checks syntax, runs tests, builds the site, and deploys it when code is pushed to `main`.
 
-1. Upload the project source to [`wdiefastw/-`](https://github.com/wdiefastw/-) on the `main` branch. If the repository is empty, create its first commit and a `main` branch using VS Code Source Control or Git.
+1. Upload the project source to [`wdiefastw/Digital-Coding-Competition`](https://github.com/wdiefastw/Digital-Coding-Competition) on the `main` branch. If the repository is empty, create its first commit and a `main` branch using VS Code Source Control or Git.
 2. In the repository, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**.
 3. Open **Actions → Publish PLOTLINE to GitHub Pages** and wait for a successful run. If Pages was configured after the last push, use **Run workflow** on `main`.
-4. Copy the published URL from **Settings → Pages** or the deployment result. This repository’s expected address is `https://wdiefastw.github.io/-/`; it will work only after a successful deployment.
+4. Copy the published URL from **Settings → Pages** or the deployment result. This repository’s expected address is `https://wdiefastw.github.io/Digital-Coding-Competition/`; it will work only after a successful deployment.
 5. Open the published site in another browser. Verify that a cover opens a playable case, the notebook updates, the writing desk opens, and both kinds of sharing links work.
 
 For the competition submission, provide **both the live website URL and the source repository URL**. The code and workflow are prepared here; publication still requires uploading the code and enabling Pages.
 
 Alternatively, run `npm run build` and drag the complete **`dist/` folder** into [Netlify Drop](https://app.netlify.com/drop). Include the whole site, including `studio.html`, `src/`, and `public/`; the hosting service provides the public URL after upload.
+
+## Updating an existing Netlify deployment
+
+Download a fresh website ZIP from the link above and extract it into a new folder. In Netlify, open the existing project for `plotline-digital-coding-competition.netlify.app`, choose **Deploys**, and upload the complete extracted folder containing `index.html`, `studio.html`, `src/`, and `public/`. After the deploy is published, reload the website with **Ctrl+F5** and check it in a private window. Replacing the deployment keeps the same public website address.
+
+The original SVG illustrations remain editable in `public/covers/`. The reader renders their bundled markup directly in the page, so cover visibility no longer depends on separate image-file requests. `npm run build` regenerates `src/cover-art.js` from the SVG sources before producing `dist/`. The artwork, layout and story logic stay the same. To regenerate the bundle for local development after editing SVG sources, run `node scripts/generate-cover-art.mjs`.
 
 ## Project structure
 
@@ -182,6 +188,7 @@ index.html                  Story library and progressive mystery reader
 studio.html                 Create-your-own writing desk
 src/library.js              Shelf, reader, notebook, and local bookmarks
 src/library.css             Cozy library and reading layouts
+src/cover-art.js            Generated inline artwork bundle
 src/play-engine.js          Progressive discovery, choices, and deductions
 src/stories.js              Registry of the 40 playable mysteries
 src/cases/                  Authored branching investigations and hidden test routes

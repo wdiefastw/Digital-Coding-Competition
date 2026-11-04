@@ -1,12 +1,14 @@
 import { cp, mkdir, readFile, rename, rm, stat } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { generateCoverArt } from './generate-cover-art.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(root, 'dist');
 const temporary = resolve(root, '.plotline-build');
 await readFile(resolve(root, 'index.html'));
 await stat(resolve(root, 'src'));
+await generateCoverArt();
 await rm(temporary, { recursive: true, force: true });
 try {
   await mkdir(temporary);
