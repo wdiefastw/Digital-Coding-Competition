@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">A glasshouse and an unusual flower</title><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e8dcc1"/><stop offset="1" stop-color="#acbaa0"/></linearGradient><linearGradient id="glass" x2="0" y2="1"><stop stop-color="#b5cebc" stop-opacity=".75"/><stop offset="1" stop-color="#5c8a73" stop-opacity=".85"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="url(#sky)"/><circle cx="452" cy="129" r="71" fill="#f1e4c4"/>
+<path d="M0 329C114 243 185 348 299 292S479 276 600 230v530H0z" fill="#7f9879"/>
+<path d="M0 427c104-86 174-53 278-99s193 24 322-36v468H0z" fill="#557d64"/>
+<path d="M85 548V305q0-207 215-207t215 207v243z" fill="url(#glass)" stroke="#f0e0b9" stroke-width="10"/>
+<path d="M300 99v449M87 306h426M110 219h380M144 158h310M87 413h426M151 169v379M225 111v437M375 111v437M449 169v379" fill="none" stroke="#e4d5ad" stroke-width="6"/>
+<path d="M243 548V370q0-63 57-63t57 63v178" fill="#355f50" stroke="#eadab2" stroke-width="7"/><path d="M300 308v240" stroke="#dacba4" stroke-width="5"/>
+<circle cx="284" cy="439" r="4" fill="#d9c993"/><circle cx="316" cy="439" r="4" fill="#d9c993"/>
+<path d="M16 484c20-103 40-169 60-199M42 475c-13-82-38-109-66-143M479 496c35-121 68-183 109-230M529 485c-8-100-26-143-51-176" fill="none" stroke="#244f3d" stroke-width="9"/>
+<g fill="#3b6d50"><path d="M67 333c-52-8-68-32-60-68 43 2 66 25 60 68zM48 393c-45-2-63-24-60-52 41 0 64 20 60 52zM60 369c11-47 37-70 70-59-6 43-32 68-70 59zM553 342c-2-54 24-81 58-76 2 44-17 71-58 76zM532 395c-46-11-60-39-47-71 44 10 61 37 47 71zM506 442c27-41 55-52 81-30-20 39-49 50-81 30z"/></g>
+<path d="M0 546h600v214H0z" fill="#a1ad88"/><path d="M264 548h72l109 212H155z" fill="#d8c5a0"/><path d="M285 559 242 760M314 558l44 202" stroke="#bba888" stroke-width="3"/>
+<ellipse cx="302" cy="657" rx="99" ry="22" fill="#758762"/>
+<path d="M233 604h134l-21 105h-92z" fill="#b76e4f"/><path d="M227 601h145v21H227z" fill="#ce8b61"/>
+<path d="M301 612v-138m0 64c-24-37-42-48-65-39 5 31 25 50 65 49m0 32c23-40 44-52 68-42-8 29-27 45-68 51" fill="none" stroke="#315f44" stroke-width="7"/>
+<path d="M300 496c-34-4-51-30-38-48 10-14 28-8 38 6-2-31 12-48 28-42 18 7 18 30 0 48 27-9 47 0 45 19-2 18-25 28-47 15 11 24 3 45-16 44-17-1-29-21-10-42z" fill="#e3b6a0"/><circle cx="311" cy="478" r="12" fill="#ab704d"/>
+<path d="M47 660c17-45 44-72 78-79-1 39-29 69-78 79M470 671c18-53 46-79 86-81-5 43-37 74-86 81" fill="#54764f"/>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>

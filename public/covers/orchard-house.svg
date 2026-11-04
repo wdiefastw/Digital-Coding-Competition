@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">A house at the end of an apple orchard</title><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#e0c6a1"/><stop offset="1" stop-color="#f0ddba"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="url(#sky)"/><circle cx="417" cy="129" r="67" fill="#efdcb5"/>
+<path d="M0 327c117-107 179-11 278-66s191-55 322-1v500H0z" fill="#9eaa73"/>
+<path d="M0 429c103-113 213-40 304-77s204-12 296 54v354H0z" fill="#7d925d"/>
+<path d="M173 399V258l128-74 131 74v141z" fill="#dcc095"/><path d="m151 266 151-99 153 99-16 15-137-85-134 85z" fill="#8a5345"/>
+<path d="M212 220v-55h33v32M373 211v-57h33v78" fill="#996b50"/><path d="M206 153h44v14h-44zM367 142h45v14h-45z" fill="#b17d59"/>
+<path d="M197 284h44v55h-44zM362 284h44v55h-44zM280 232h43v43h-43z" fill="#546650"/><path d="M219 284v55M197 311h44M384 284v55M362 311h44M301 232v43" stroke="#bda57a" stroke-width="4"/>
+<path d="M279 321h45v78h-45z" fill="#886249"/><circle cx="313" cy="361" r="3" fill="#d7be84"/>
+<path d="M159 399h287v17H159z" fill="#aa9671"/>
+<path d="M291 418c-41 87-58 182-19 342h126c-80-149-115-235-85-342z" fill="#c7b283"/>
+<path d="M49 593c10-131 10-244 3-350M135 574c-4-111 3-182 26-251M491 597c-18-131-10-229 19-327M560 656c-11-117-11-193 6-253" fill="none" stroke="#665841" stroke-width="15"/>
+<g fill="#536f47"><path d="M-26 246c-7-70 62-121 130-94 60-8 97 43 71 93 38 62-6 114-62 107-29 50-108 40-120-9-55-1-78-56-19-97zM113 344c-29-46 1-99 57-89 45-29 92 2 84 49 40 35 17 91-26 95-24 48-90 40-99-5-37-1-47-34-16-50zM459 274c-28-56 14-111 71-102 48-28 103 5 94 58 42 38 21 96-29 101-32 44-88 34-100-9-41 8-68-17-36-48zM514 421c-25-45 3-89 48-83 36-24 78 4 69 44 40 32 20 80-22 84-22 39-74 34-83-3-37 1-52-22-12-42z"/></g>
+<g fill="#ad6c48"><circle cx="25" cy="233" r="12"/><circle cx="89" cy="196" r="12"/><circle cx="126" cy="278" r="12"/><circle cx="50" cy="307" r="12"/><circle cx="159" cy="300" r="11"/><circle cx="207" cy="354" r="11"/><circle cx="166" cy="380" r="11"/><circle cx="503" cy="234" r="12"/><circle cx="564" cy="207" r="12"/><circle cx="584" cy="291" r="12"/><circle cx="541" cy="406" r="11"/><circle cx="590" cy="441" r="11"/></g>
+<path d="M0 656c107-57 198-14 284 18s194-32 316-17v103H0z" fill="#687e4d"/>
+<path d="M106 692h106l-13 55h-80z" fill="#aa7a50"/><path d="M105 691h108v12H105zM118 712h82M123 730h73" stroke="#785d3f" stroke-width="5"/>
+<g fill="#bc7951"><circle cx="137" cy="685" r="15"/><circle cx="167" cy="677" r="16"/><circle cx="191" cy="689" r="14"/></g>
+<path d="M27 722c12-34 23-37 34-51M460 726c16-38 33-45 49-49" fill="none" stroke="#a5b277" stroke-width="3"/>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>

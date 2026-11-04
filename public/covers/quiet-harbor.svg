@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">A still harbor before sunrise</title><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#2c5261"/><stop offset=".52" stop-color="#9eaea0"/><stop offset="1" stop-color="#d9c9aa"/></linearGradient><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#8fa89f"/><stop offset="1" stop-color="#2e6267"/></linearGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="url(#sky)"/><circle cx="126" cy="192" r="63" fill="#e4d1a3" opacity=".8"/>
+<path d="M0 350c73-37 109-39 170-24s101-50 167-29 139 16 263-29v153H0z" fill="#607b77"/>
+<path d="M0 390c108-22 146-10 226-29s158 9 235-6 108-6 139 4v83H0z" fill="#9eafa2"/>
+<path d="M0 418h600v342H0z" fill="url(#sea)"/>
+<path d="M399 377h128l-34-39h-53z" fill="#536c65"/><path d="m449 339 12-138h33l11 138z" fill="#d6c8a4"/><path d="M455 280h44l2 21h-48z" fill="#9b694d"/><path d="M456 201h43v-33h-43z" fill="#aab7a0"/><path d="m447 168 30-27 30 27z" fill="#4b5e58"/><path d="M470 170h15v29h-15z" fill="#eed8a0"/>
+<path d="m469 185-155-30v59z" fill="#e3d2a9" opacity=".18"/>
+<path d="M24 455c96-19 155-18 253-8M320 433c71-12 151-8 229 3M68 489c55-7 110-8 168-3M349 500c66-10 136-10 199-1" fill="none" stroke="#bed0b9" opacity=".45" stroke-width="4"/>
+<path d="M0 551 344 488l76 272H0z" fill="#665d4a"/><path d="M0 561 333 499M0 613l348-68M0 671l362-76M0 728l376-83" stroke="#aa9874" stroke-width="4"/>
+<path d="M28 550v-99h16v93M261 507v-90h15v86M0 476l269-47" fill="none" stroke="#3d4f49" stroke-width="10"/>
+<path d="m281 590 193-36-15 62-111 34-48-20z" fill="#d0b590"/><path d="m292 589 171-28-28 30-112 24z" fill="#364c49"/>
+<path d="m340 598 74-15M347 615l74-15" stroke="#947b5b" stroke-width="6"/>
+<path d="M390 568v-155" stroke="#384e4b" stroke-width="5"/><path d="m395 420 8 122 91-18z" fill="#d8cfad"/>
+<path d="m487 469 75-13-6 23-46 13z" fill="#795d4d"/><path d="M524 459v-81" stroke="#54665c" stroke-width="3"/><path d="m528 384 2 62 43-8z" fill="#b7c0a6"/>
+<path d="M357 666c77-9 140-28 189-47M376 686c67-7 131-20 189-43M431 718c45-2 92-11 133-27" fill="none" stroke="#a0bba7" opacity=".38" stroke-width="3"/>
+<path d="M90 83q17-18 34 0 15-18 32 0M320 112q14-14 26 0 12-14 24 0" fill="none" stroke="#d6dbbe" opacity=".65" stroke-width="3"/>
+<path d="m53 681 55-14 12 50-54 14z" fill="#a68d63"/><path d="m75 685 28 1 3 23-26 3z" fill="#dfc99b"/>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>

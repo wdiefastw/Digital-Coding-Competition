@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">An inn with warm windows in deep snow</title><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#263b49"/><stop offset="1" stop-color="#7b9899"/></linearGradient><linearGradient id="snow" x2="0" y2="1"><stop stop-color="#dfdfcf"/><stop offset="1" stop-color="#b3c8c1"/></linearGradient><radialGradient id="warm"><stop stop-color="#edc981"/><stop offset="1" stop-color="#b68854"/></radialGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="url(#sky)"/><circle cx="421" cy="120" r="45" fill="#e0dfc5" opacity=".8"/>
+<path d="M0 335 110 212l92 84 94-151 126 132 87-69 91 107v445H0z" fill="#536f76"/>
+<path d="m110 212-43 85 43-25 28 24 14-27zM296 145l-52 85 52-26 40 17zM509 208l-45 79 43-26 34 23z" fill="#a8bcba"/>
+<path d="M0 463c103-70 178-25 280-65s195-12 320 21v341H0z" fill="url(#snow)"/>
+<path d="M77 420 152 235l76 185zM29 441l51-133 55 133zM450 443l72-210 78 210z" fill="#274f4c"/>
+<path d="m153 235-28 76 28-16 28 15zM522 233l-29 89 28-17 33 18zM80 308l-22 59 23-10 22 11z" fill="#a1b8ac"/>
+<path d="M135 482V342l166-103 165 103v163z" fill="#7f6554"/>
+<path d="M118 343 299 221l188 122-19 29-167-111-164 112z" fill="#d8ddce"/>
+<path d="M152 375h295M153 405h295M153 435h295M153 466h295" stroke="#584d43" stroke-width="5" opacity=".45"/>
+<path d="M367 263v-69h34v91" fill="#6a5a50"/><path d="M360 190h48v11h-48z" fill="#d0d8ca"/>
+<path d="M384 188c-34-54 27-44 3-87s19-46 1-80" fill="none" stroke="#a8b6ae" stroke-width="20" opacity=".25"/>
+<path d="M177 363h55v67h-55zM365 363h55v67h-55zM274 293h53v49h-53z" fill="url(#warm)"/>
+<path d="M204 363v67M177 394h55M392 363v67M365 394h55M300 293v49" stroke="#6c5443" stroke-width="5"/>
+<path d="M271 402h61v104h-61z" fill="#3b514a"/><path d="M281 413h41v35h-41z" fill="#e8c27a"/><circle cx="319" cy="468" r="3" fill="#ddbb79"/>
+<path d="M122 507c67-33 117-9 173-14s107-23 190 13v26H122z" fill="#dce2d0"/>
+<path d="M269 514c-10 74 71 111 120 246H218c70-139-10-159 51-246z" fill="#e9e6d0"/>
+<path d="M65 742 102 416l44 326zM0 641l72-155 74 155zM0 564l71-144 75 144zM9 486l62-123 62 123z" fill="#1d4542"/>
+<path d="M484 760 532 410l59 350zM440 666l92-183 68 148v35zM457 577l75-158 68 142v16zM474 493l58-137 63 137z" fill="#28514c"/>
+<g fill="#e2e2d0" opacity=".8"><circle cx="55" cy="81" r="3"/><circle cx="143" cy="124" r="3"/><circle cx="238" cy="73" r="3"/><circle cx="351" cy="48" r="2"/><circle cx="518" cy="94" r="3"/><circle cx="459" cy="212" r="3"/><circle cx="74" cy="229" r="2"/><circle cx="210" cy="209" r="3"/><circle cx="544" cy="317" r="3"/><circle cx="98" cy="346" r="2"/><circle cx="361" cy="559" r="2"/><circle cx="183" cy="599" r="3"/><circle cx="432" cy="648" r="2"/></g>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>

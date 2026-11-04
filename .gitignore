@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.plotline-build/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+.vscode/*.log
+playwright-report/
+test-results/

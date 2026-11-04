@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">A clockmaker’s workbench at dusk</title><defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#3b4239"/><stop offset="1" stop-color="#59604a"/></linearGradient><radialGradient id="face"><stop stop-color="#f0dfb4"/><stop offset="1" stop-color="#c6a775"/></radialGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="url(#wall)"/>
+<path d="M76 0h448v365H76z" fill="#243b37"/><path d="M91 0h418v347H91z" fill="#496059"/><path d="M293 0h14v350H293zM91 125h418v12H91z" fill="#9a8c66"/>
+<circle cx="439" cy="62" r="32" fill="#d1c09b" opacity=".65"/>
+<path d="M103 303 184 226l29 34 79-68 81 79 65-63 64 77v61H103z" fill="#344d45"/>
+<path d="M214 522V165q0-37 35-58l51-42 51 42q35 21 35 58v357z" fill="#8f6846"/>
+<path d="M230 509V171q0-29 26-45l44-36 44 36q26 16 26 45v338z" fill="#af8556"/>
+<path d="M248 317h104v170H248z" fill="#4d4b38"/><path d="M300 321v112" stroke="#c7a269" stroke-width="7"/><circle cx="300" cy="443" r="30" fill="#b98e4f"/><circle cx="300" cy="443" r="19" fill="#d9b772"/>
+<circle cx="300" cy="233" r="93" fill="#654f35"/><circle cx="300" cy="233" r="82" fill="url(#face)"/><circle cx="300" cy="233" r="72" fill="none" stroke="#a58b5d" stroke-width="2"/>
+<g stroke="#655c43" stroke-width="4"><path d="M300 164v13M300 289v13M231 233h13M356 233h13M265 173l7 12M328 281l7 12M240 198l12 7M349 261l12 7M240 268l12-7M349 205l12-7M265 293l7-12M328 185l7-12"/></g>
+<path d="M300 233v-43M300 233l39 25" stroke="#465044" stroke-width="6" stroke-linecap="round"/><circle cx="300" cy="233" r="7" fill="#8b714a"/>
+<path d="M195 512h210v28H195z" fill="#6d5137"/>
+<path d="M0 553h600v207H0z" fill="#715b43"/><path d="M0 553h600v20H0z" fill="#b19363"/>
+<ellipse cx="150" cy="618" rx="76" ry="26" fill="#453f32" opacity=".4"/>
+<g transform="translate(144 600)" fill="#bca06b"><path d="m-7-65 15 0 4 15 15 5 13-10 11 11-10 13 6 15 15 4v15l-15 4-6 15 10 13-11 11-13-10-15 6-4 15H-7l-4-15-15-6-13 10-11-11 10-13-6-15-15-4v-15l15-4 6-15-10-13 11-11 13 10 15-5z"/><circle r="30" fill="#715b43"/><circle r="10" fill="#d7bd83"/><path d="M-5-38h10v76H-5zM-38-5h76V5h-76z"/></g>
+<g transform="translate(438 627) rotate(20)" fill="#97825b"><path d="m-7-47 14 0 3 12 12 5 10-7 9 9-7 10 5 12 12 3v14l-12 3-5 12 7 10-9 9-10-7-12 5-3 12H-7l-3-12-12-5-10 7-9-9 7-10-5-12-12-3V-3l12-3 5-12-7-10 9-9 10 7 12-5z"/><circle r="23" fill="#715b43"/><circle r="7" fill="#c4a777"/></g>
+<path d="m277 653 86-35 45 81-87 35z" fill="#d9ca9f"/><path d="m304 663 49-20M312 679l49-20M320 695l33-14" stroke="#a08d65" stroke-width="3"/>
+<path d="m54 709 168-43" stroke="#324a3d" stroke-width="10" stroke-linecap="round"/><path d="m207 663 34-9 7 10-34 9z" fill="#b9b092"/>
+<path d="M476 389v130M462 388h28l17 37h-62z" fill="#bfa46d" stroke="#bfa46d" stroke-width="5"/><ellipse cx="476" cy="523" rx="32" ry="7" fill="#b19461"/>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>

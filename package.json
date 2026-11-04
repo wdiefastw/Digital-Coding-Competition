@@ -1,0 +1,15 @@
+{
+  "name": "plotline-story-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A cozy library of ten playable mysteries and a branching story-writing desk",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

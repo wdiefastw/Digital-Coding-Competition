@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">A quiet theater after the curtain falls</title><defs><linearGradient id="velvet" x2="1" y2="0"><stop stop-color="#542b37"/><stop offset=".5" stop-color="#9c4b4b"/><stop offset="1" stop-color="#512a36"/></linearGradient><radialGradient id="stage"><stop stop-color="#d3b48a"/><stop offset="1" stop-color="#453b40"/></radialGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="#292d36"/>
+<path d="M0 0h600v523H0z" fill="url(#stage)"/>
+<path d="m299 94-156 439h310z" fill="#eddbb4" opacity=".18"/>
+<path d="M0 0h600v117H0z" fill="#59303c"/>
+<path d="M0 0h279c-17 189-73 301-197 377L0 466zM600 0H321c17 189 73 301 197 377l82 89z" fill="url(#velvet)"/>
+<path d="M0 0c49 95 98 122 150 126S245 83 279 0M321 0c37 90 75 129 129 126S553 90 600 0" fill="#994b4c"/>
+<g fill="none" stroke="#b5655b" opacity=".45" stroke-width="4"><path d="M41 0c14 156 15 264-24 398M89 0c18 173 4 285-53 384M137 0c12 168-3 268-69 365M183 0c12 158-11 257-84 340M559 0c-14 156-15 264 24 398M511 0c-18 173-4 285 53 384M463 0c-12 168 3 268 69 365M417 0c-12 158 11 257 84 340"/></g>
+<path d="M0 368c50 2 83-11 118-48M600 368c-50 2-83-11-118-48" fill="none" stroke="#d2ad68" stroke-width="12"/>
+<path d="M80 352v77M520 352v77" stroke="#bd9454" stroke-width="5"/><path d="m80 418-13 40h26zM520 418l-13 40h26z" fill="#bd9454"/>
+<path d="M0 532h600v228H0z" fill="#685344"/><path d="M0 532h600v13H0z" fill="#b39670"/>
+<path d="M0 593h600M0 660h600M0 730h600M90 545 49 760M210 545l-13 215M390 545l13 215M510 545l41 215" fill="none" stroke="#423d38" stroke-width="3" opacity=".7"/>
+<path d="m197 287 122-18 24 150c-5 54-60 91-92 59-31-29-50-83-54-191z" fill="#ead8b3"/>
+<path d="m218 330 31-7 8 16-35 5zM276 318l30-4 4 16-32 5z" fill="#6c6054"/>
+<path d="M240 403c19 18 44 17 66-8-7 33-45 48-66 8z" fill="#9b6f5a"/>
+<path d="m310 354 91 30-40 136c-24 36-72 44-88 8-15-35 1-94 37-174z" fill="#b2a389"/>
+<path d="m314 399 25 8-4 15-29-9zM360 415l26 9-5 14-28-10z" fill="#4c4b46"/>
+<path d="M302 489c21-21 38-19 53 6-20-11-35-12-53-6z" fill="#63564b"/>
+<path d="M347 544c-13 20-12 34-1 41M235 480c-35 31-63 42-80 21" fill="none" stroke="#bb9e75" stroke-width="4"/>
+<path d="m427 632 59-8 15 64-61 10z" fill="#d4be91"/><path d="m440 643 34-4M442 654l33-4M445 665l22-3" stroke="#9b845e" stroke-width="3"/>
+<ellipse cx="278" cy="653" rx="87" ry="17" fill="#342e31" opacity=".2"/>
+<path d="M71 721h24M82 709v24M520 574h17M529 567v16" stroke="#b49c71" stroke-width="3" opacity=".5"/>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-labelledby="title"><title id="title">A moonlit library, with one book left open</title><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#172c34"/><stop offset="1" stop-color="#315652"/></linearGradient><radialGradient id="glow"><stop stop-color="#efcd85"/><stop offset="1" stop-color="#bd8b46"/></radialGradient><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".1"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs><g>
+<rect width="600" height="760" fill="#182f31"/>
+<path d="M67 0h466v542H67z" fill="#31433e"/><path d="M99 0h402v538H99z" fill="url(#sky)"/>
+<circle cx="355" cy="128" r="54" fill="#e4d7ae"/><circle cx="375" cy="111" r="51" fill="#203b3e"/>
+<g fill="#e2d6b0"><circle cx="155" cy="76" r="2"/><circle cx="260" cy="67" r="2"/><circle cx="446" cy="106" r="2"/><circle cx="389" cy="230" r="2"/><circle cx="201" cy="207" r="1.8"/><circle cx="283" cy="166" r="1.5"/></g>
+<path d="M103 325 145 285 168 309 205 265 243 303 282 283 321 321 355 280 394 316 441 275 496 320V540H103z" fill="#263a3b"/>
+<path d="M89 0h19v553H89zM492 0h19v553h-19zM292 0h15v553h-15z" fill="#c0a16b"/><path d="M92 243h413v12H92z" fill="#b79a68"/><path d="M300 0v241M100 252l200-91 200 91" fill="none" stroke="#9d855f" stroke-width="6"/>
+<path d="M0 0h68v608H0zM532 0h68v608h-68z" fill="#182a28"/>
+<path d="M0 105h68v12H0zM0 261h68v12H0zM0 425h68v12H0zM532 112h68v12h-68zM532 282h68v12h-68zM532 451h68v12h-68z" fill="#806b47"/>
+<g fill="#9e8050"><path d="M7 30h14v74H7zM25 36h11v68H25zM41 18h19v86H41zM7 163h18v97H7zM31 187h10v73H31zM45 157h16v103H45zM10 321h17v104H10zM32 336h12v89H32zM49 303h12v122H49z"/></g>
+<g fill="#6a7860"><path d="M541 25h18v85h-18zM565 41h10v69h-10zM580 17h15v93h-15zM540 180h11v100h-11zM556 190h18v90h-18zM580 166h14v114h-14zM540 349h18v101h-18zM564 329h10v121h-10zM580 357h15v93h-15z"/></g>
+<path d="M0 551h600v209H0z" fill="#27332b"/><path d="m0 552 600 0v67H0z" fill="#7b6745"/><path d="M0 554h600v14H0z" fill="#af8d54"/>
+<ellipse cx="299" cy="611" rx="196" ry="58" fill="#172724" opacity=".55"/>
+<path d="m117 555 145-44 31 16 25-16 162 45-18 86-162-21-166 21z" fill="#d7bb7d"/>
+<path d="m127 557 133-37 38 19v70l-151 21zM307 539l19-18 142 37-19 71-142-20z" fill="#eee0b6"/>
+<path d="M298 538v80" stroke="#94734a" stroke-width="4"/><g stroke="#c3ad78" stroke-width="2"><path d="m151 563 105-23M155 578l103-20M161 594l97-17M166 610l92-14M329 543l109 22M327 560l110 21M325 578l105 17M325 596l99 17"/></g>
+<path d="M419 340v154" stroke="#b79e64" stroke-width="7"/><path d="m363 351 25-72h61l26 72z" fill="url(#glow)"/><path d="M391 281h53v-9h-53z" fill="#d8bd7b"/><ellipse cx="420" cy="498" rx="36" ry="8" fill="#b39153"/>
+<path d="M240 661c12-21 39-22 44-4 5 22-22 31-31 14l-44 29-8-9 13-9-4-7 9-6 5 7 16-10" fill="none" stroke="#c9aa65" stroke-width="8"/>
+<path d="M95 728c43-22 67-20 94-3M399 709c27-15 58-13 91 0" fill="none" stroke="#53634b" stroke-width="3"/>
+</g><rect width="600" height="760" fill="#a49b80" filter="url(#grain)" opacity=".13" pointer-events="none"/></svg>
