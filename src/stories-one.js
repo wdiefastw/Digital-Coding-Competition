@@ -1,3 +1,4 @@
+// Legacy first-edition cases retained for old-bookmark recovery; not part of the current collection.
 /** Original playable cases. Library descriptions contain no solutions. */
 export const storiesOne = [
   {

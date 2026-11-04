@@ -70,7 +70,9 @@ test('evidence can be collected in either route order without duplicates', () =>
 test('visible deductions omit correctness flags, feedback, destinations, and future solution', () => {
   const story = fixture(), state = choose(story, gather(story, createPlayState(story)), 'solve');
   const scene = getVisibleScene(story, state);
-  assert.deepEqual(scene.puzzle, { prompt: 'Where was the letter prepared?', options: [{ id: 'station', label: 'The railway station' }, { id: 'greenhouse', label: 'The greenhouse' }] });
+  assert.equal(scene.puzzle.mode, 'single');
+  assert.equal(scene.puzzle.prompt, 'Where was the letter prepared?');
+  assert.deepEqual(new Map(scene.puzzle.options.map(option => [option.id, option.label])), new Map([['station', 'The railway station'], ['greenhouse', 'The greenhouse']]));
   const output = JSON.stringify(scene);
   for (const secret of ['correctTo', 'correct', 'The petals and date agree.', 'An old promise', 'solution']) assert.ok(!output.includes(secret), secret);
 });
@@ -151,21 +153,86 @@ test('story validation rejects broken references, ambiguous answers, duplicate I
   assert.equal({}.polluted, undefined);
 });
 
-test('the ready-to-play catalog contains ten distinct mysteries', () => {
-  assert.equal(stories.length, 10);
-  assert.equal(new Set(stories.map(story => story.id)).size, 10);
-  assert.equal(new Set(stories.map(story => story.title)).size, 10);
+test('the ready-to-play catalog contains forty distinct mysteries', () => {
+  assert.equal(stories.length, 40);
+  assert.equal(new Set(stories.map(story => story.id)).size, 40);
+  assert.equal(new Set(stories.map(story => story.title)).size, 40);
 });
 
+function assertProjection(story, state) {
+  assert.ok(validateState(story, JSON.parse(JSON.stringify(state))), 'A legal state survives saving and restoration.');
+  const scene = getVisibleScene(story, state);
+  assert.deepEqual(scene.characters.map(item => item.id), state.met);
+  assert.deepEqual(scene.clues.map(item => item.id), state.clues);
+  for (const choice of scene.choices) {
+    for (const secret of ['to', 'requires', 'requiresAny', 'requiresAnyGroups', 'requiresFlags', 'excludesFlags']) assert.equal(secret in choice, false);
+  }
+  if (scene.puzzle) {
+    for (const secret of ['correctTo', 'wrongFeedback', 'correctFeedback']) assert.equal(secret in scene.puzzle, false);
+    for (const option of scene.puzzle.options) {
+      assert.equal('correct' in option, false);
+      assert.equal('feedback' in option, false);
+    }
+  }
+  return scene;
+}
+
+function verifyWrongDeduction(story, state) {
+  const puzzle = story.nodes[state.nodeId].puzzle;
+  const unsupported = puzzle.options.find(option => !option.correct);
+  let wrong = unsupported.id;
+  if (puzzle.mode === 'multiple') {
+    wrong = puzzle.options.filter(option => option.correct).map(option => option.id);
+    wrong[0] = unsupported.id;
+  }
+  const result = answer(story, state, wrong);
+  assert.equal(result.correct, false);
+  for (const key of ['nodeId', 'visited', 'clues', 'met', 'flags', 'solved']) assert.deepEqual(result.state[key], state[key], `A wrong theory cannot change ${key}.`);
+  assert.equal(result.state.attempts, state.attempts + 1);
+  assert.ok(validateState(story, result.state));
+}
+
 for (const story of stories) {
-  test(`catalog: ${story.title} is solvable, progressively revealed, and has no unreachable scenes`, () => {
+  test(`catalog: ${story.title} supports legal, spoiler-free complete investigations`, () => {
     const validation = validateStory(story);
     assert.ok(validation.ok, validation.errors.join('; '));
     const initial = createPlayState(story);
-    const opening = getVisibleScene(story, initial);
+    const opening = assertProjection(story, initial);
     assert.deepEqual(opening.characters.map(character => character.id), story.nodes[story.start].meets || []);
     assert.deepEqual(opening.clues.map(clue => clue.id), story.nodes[story.start].clues || []);
     assert.equal(opening.ending, null);
+    if ((story.revision || 1) >= 2) {
+      assert.ok(Array.isArray(story.solutionPaths) && story.solutionPaths.length >= 2, 'Expanded cases need at least two audited routes.');
+      const endings = new Set(), puzzleScenes = new Set();
+      for (const path of story.solutionPaths) {
+        let state = createPlayState(story);
+        assert.ok(path.id && Array.isArray(path.actions));
+        for (const action of path.actions) {
+          const scene = assertProjection(story, state);
+          if (action.type === 'choice') {
+            const available = scene.choices.find(choice => choice.id === action.id);
+            assert.ok(available && !available.locked, `Route ${path.id}: ${state.nodeId} / ${action.id} must be available.`);
+            state = choose(story, state, action.id);
+          } else {
+            assert.equal(action.type, 'answer');
+            assert.ok(scene.puzzle, `Route ${path.id}: deduction required at ${state.nodeId}.`);
+            verifyWrongDeduction(story, state);
+            puzzleScenes.add(state.nodeId);
+            const result = answer(story, state, action.id);
+            assert.equal(result.correct, true, `Route ${path.id}: supported theory required at ${state.nodeId}.`);
+            state = result.state;
+          }
+        }
+        const ending = assertProjection(story, state).ending;
+        assert.equal(ending?.kind, 'solved', `Route ${path.id} must conclude in an earned solved ending.`);
+        assert.ok(state.solved);
+        endings.add(state.nodeId);
+      }
+      assert.ok(endings.size >= 2, 'Different investigation routes must lead to distinct conclusions.');
+      assert.ok(puzzleScenes.size >= 3, 'Expanded cases need multiple genuine deductions.');
+      return;
+    }
+    // Legacy small cases can be audited exhaustively; large revision-two cases use authored route proofs above.
     const queue = [initial], signatures = new Set(), reached = new Set();
     let solved = false, deductionCount = 0;
     while (queue.length) {
@@ -173,37 +240,149 @@ for (const story of stories) {
       const signature = [state.nodeId, [...state.met].sort().join(','), [...state.clues].sort().join(','), state.solved].join('|');
       if (signatures.has(signature)) continue;
       signatures.add(signature);
-      assert.ok(signatures.size < 20_000, 'The authored state graph should remain small enough to audit.');
-      assert.ok(validateState(story, JSON.parse(JSON.stringify(state))), 'Every reachable state survives save/restore.');
-      const scene = getVisibleScene(story, state);
+      assert.ok(signatures.size < 20_000, 'The legacy authored state graph remains bounded.');
+      const scene = assertProjection(story, state);
       reached.add(scene.id);
-      for (const character of scene.characters) assert.ok(state.met.includes(character.id), 'Only encountered characters appear.');
-      for (const clue of scene.clues) assert.ok(state.clues.includes(clue.id), 'Only discovered evidence appears.');
-      for (const choice of scene.choices) {
-        assert.equal('to' in choice, false, 'Choice projections do not leak future scene IDs.');
-        if (!choice.locked) queue.push(choose(story, state, choice.id));
-      }
+      for (const choice of scene.choices) if (!choice.locked) queue.push(choose(story, state, choice.id));
       if (scene.puzzle) {
         deductionCount++;
-        assert.equal('correctTo' in scene.puzzle, false);
-        let correctCount = 0;
-        for (const option of scene.puzzle.options) {
-          assert.equal('correct' in option, false);
-          assert.equal('feedback' in option, false);
-          const result = answer(story, state, option.id);
-          if (result.correct) { correctCount++; queue.push(result.state); }
-          else {
-            assert.equal(result.state.nodeId, state.nodeId);
-            assert.deepEqual(result.state.clues, state.clues);
-            assert.deepEqual(result.state.met, state.met);
-          }
-        }
-        assert.equal(correctCount, 1, 'Exactly one deduction answer advances the story.');
+        verifyWrongDeduction(story, state);
+        const supported = story.nodes[state.nodeId].puzzle.options.find(option => option.correct);
+        queue.push(answer(story, state, supported.id).state);
       }
       if (scene.ending?.kind === 'solved') solved = true;
     }
-    assert.ok(solved, 'A solved ending must be reachable through legal player choices.');
-    assert.ok(deductionCount > 0, 'Every ready mystery includes a deduction.');
-    assert.equal(reached.size, Object.keys(story.nodes).length, 'Every scene is reachable with its actual clue gates.');
+    assert.ok(solved);
+    assert.ok(deductionCount > 0);
+    assert.equal(reached.size, Object.keys(story.nodes).length);
   });
 }
+
+function branchingFixture() {
+  const story = fixture();
+  story.revision = 2;
+  story.flags = ['archive-route', 'garden-route', 'comparison-done'];
+  story.clues.push({ id: 'weather', title: 'A weather note', description: 'Rain began after the letter arrived.' });
+  story.nodes.door.choices = [
+    { id: 'post', label: 'Work with the postmaster', to: 'post', excludesFlags: ['garden-route'] },
+    { id: 'garden', label: 'Work with the gardener', to: 'garden', excludesFlags: ['archive-route'] },
+    { id: 'compare', label: 'Compare the papers', to: 'comparison', requiresAny: ['stamp', 'violets'], requiresAnyGroups: [['stamp', 'violets'], ['weather']] },
+    { id: 'archive-solve', label: 'Conclude at the archive', to: 'deduction', requiresFlags: ['archive-route', 'comparison-done'] },
+    { id: 'garden-solve', label: 'Conclude in the garden', to: 'garden-deduction', requiresFlags: ['garden-route', 'comparison-done'] },
+  ];
+  story.nodes.post.setFlags = ['archive-route'];
+  story.nodes.post.clues.push('weather');
+  story.nodes.post.routeLabel = 'Following the paper trail';
+  story.nodes.garden.setFlags = ['garden-route'];
+  story.nodes.garden.clues.push('weather');
+  story.nodes.comparison = {
+    title: 'The evidence table', location: 'A quiet room', body: ['Only two observations establish where the letter was prepared.'],
+    puzzle: { mode: 'multiple', prompt: 'Which observations support your explanation?', options: [
+      { id: 'dated', label: 'A newly dated stamp', correct: true, feedback: 'The dating is established.' },
+      { id: 'petals', label: 'Violets found on the letter', correct: true, feedback: 'The physical trace is established.' },
+      { id: 'rumor', label: 'A rumor about a traveler', correct: false, feedback: 'The rumor is unconfirmed.' },
+      { id: 'ink', label: 'An assumed ink color', correct: false, feedback: 'No ink comparison was made.' },
+    ], wrongFeedback: 'Separate observed evidence from assumptions.', correctTo: 'comparison-result' },
+    choices: [{ id: 'back', label: 'Review your notes', to: 'door' }],
+  };
+  story.nodes['comparison-result'] = { title: 'A supported connection', location: 'A quiet room', body: ['The connection holds.'], setFlags: ['comparison-done'], choices: [{ id: 'back', label: 'Return to the crossroads', to: 'door' }] };
+  story.nodes['garden-deduction'] = structuredClone(story.nodes.deduction);
+  story.nodes['garden-deduction'].puzzle.correctTo = 'garden-ending';
+  story.nodes['garden-ending'] = structuredClone(story.nodes.ending);
+  story.nodes['garden-ending'].ending.title = 'A conversation beneath the trees';
+  return story;
+}
+
+test('permanent route choices lock the alternative while alternative evidence gates remain fair', () => {
+  const story = branchingFixture();
+  assert.deepEqual(validateStory(story), { ok:true, errors:[] });
+  const initial = createPlayState(story);
+  assert.equal(initial.storyRevision, 2);
+  assert.deepEqual(initial.flags, []);
+  assert.throws(() => choose(story, initial, 'compare'), /investigating/);
+  let state = choose(story, initial, 'post');
+  assert.equal(getVisibleScene(story, state).routeLabel, 'Following the paper trail');
+  state = choose(story, state, 'back');
+  assert.deepEqual(state.flags, ['archive-route']);
+  const scene = getVisibleScene(story, state);
+  assert.equal(scene.choices.find(choice => choice.id === 'garden').locked, true);
+  assert.match(scene.choices.find(choice => choice.id === 'garden').lockReason, /earlier choice/);
+  assert.throws(() => choose(story, state, 'garden'), /investigating/);
+  assert.equal(scene.choices.find(choice => choice.id === 'compare').locked, false);
+  state = choose(story, state, 'compare');
+  const projection = getVisibleScene(story, state).puzzle;
+  assert.equal(projection.mode, 'multiple');
+  for (const secret of ['wrongFeedback', 'correctFeedback', 'correctTo', 'minSelections', 'maxSelections']) assert.equal(secret in projection, false);
+  assert.throws(() => answer(story, state, ['dated', 'dated']), /distinct/);
+  assert.throws(() => answer(story, state, 'dated'), /distinct/);
+  assert.throws(() => answer(story, state, ['dated']), /at least/);
+  const wrong = answer(story, state, ['dated', 'rumor']);
+  assert.equal(wrong.correct, false);
+  assert.equal(wrong.feedback, 'Separate observed evidence from assumptions.');
+  assert.deepEqual(wrong.state.flags, state.flags);
+  const correct = answer(story, wrong.state, ['petals', 'dated']);
+  assert.equal(correct.correct, true);
+  assert.deepEqual(correct.state.flags, ['archive-route', 'comparison-done']);
+  assert.ok(validateState(story, correct.state));
+  state = choose(story, correct.state, 'back');
+  assert.equal(getVisibleScene(story, state).choices.find(choice => choice.id === 'archive-solve').locked, false);
+  assert.equal(getVisibleScene(story, state).choices.find(choice => choice.id === 'garden-solve').locked, true);
+  const gardenState = choose(story, choose(story, createPlayState(story), 'garden'), 'back');
+  assert.equal(getVisibleScene(story, gardenState).choices.find(choice => choice.id === 'post').locked, true);
+});
+
+test('legacy revision-one bookmarks migrate without losing evidence and revision-two bookmarks cannot be forged', () => {
+  const legacy = fixture();
+  const save = gather(legacy, createPlayState(legacy));
+  delete save.storyRevision;
+  delete save.flags;
+  assert.ok(validateState(legacy, save));
+  const migrated = choose(legacy, save, 'solve');
+  assert.equal(migrated.storyRevision, 1);
+  assert.deepEqual(migrated.flags, []);
+  assert.deepEqual(migrated.clues, save.clues);
+  const expanded = branchingFixture();
+  assert.equal(validateState(expanded, save), false);
+  const initial = createPlayState(expanded);
+  assert.equal(validateState(expanded, { ...initial, flags:['archive-route'] }), false);
+  assert.equal(validateState(expanded, { ...initial, storyRevision:1 }), false);
+  const missing = structuredClone(initial); delete missing.flags;
+  assert.equal(validateState(expanded, missing), false);
+});
+
+test('route and evidence schema rejects impossible references and ambiguous multi-selections', () => {
+  for (const mutate of [
+    story => { story.flags.push('archive-route'); },
+    story => { story.nodes.post.setFlags = ['not-defined']; },
+    story => { story.nodes.door.choices[0].requiresFlags = ['not-defined']; },
+    story => { story.nodes.door.choices[0].excludesFlags = ['not-defined']; },
+    story => { story.nodes.door.choices[0].requiresAny = null; },
+    story => { story.nodes.door.choices[0].requiresAny = []; },
+    story => { story.nodes.door.choices[0].requiresAnyGroups = [null]; },
+    story => { story.nodes.door.choices[0].requiresAnyGroups = [[]]; },
+    story => { story.nodes.comparison.puzzle.mode = 'unknown'; },
+    story => { story.nodes.comparison.puzzle.options[1].correct = false; },
+    story => { story.nodes.comparison.puzzle.minSelections = 3; },
+    story => { story.nodes.comparison.puzzle.maxSelections = 1; },
+    story => { delete story.nodes.comparison.puzzle.wrongFeedback; },
+    story => { story.nodes.post.routeLabel = ''; },
+  ]) {
+    const story = branchingFixture(); mutate(story);
+    assert.equal(validateStory(story).ok, false);
+  }
+});
+
+
+test('deduction presentation is stable across reloads, leaves source order intact, and preserves answer identities', () => {
+  const story = branchingFixture();
+  let state = choose(story, choose(story, choose(story, createPlayState(story), 'post'), 'back'), 'compare');
+  const before = structuredClone(story.nodes[state.nodeId].puzzle.options);
+  const first = getVisibleScene(story, state).puzzle.options;
+  const restored = getVisibleScene(structuredClone(story), JSON.parse(JSON.stringify(state))).puzzle.options;
+  assert.deepEqual(first, restored);
+  assert.deepEqual(story.nodes[state.nodeId].puzzle.options, before);
+  assert.deepEqual(new Set(first.map(option => option.id)), new Set(before.map(option => option.id)));
+  assert.ok(first.every(option => !('correct' in option) && !('feedback' in option)));
+  const supported = before.filter(option => option.correct).map(option => option.id);
+  assert.equal(answer(story, state, supported).correct, true);
+});

@@ -2,7 +2,7 @@
   "name": "plotline-story-studio",
   "version": "1.0.0",
   "private": true,
-  "description": "A cozy library of ten playable mysteries and a branching story-writing desk",
+  "description": "A cozy library of 40 branching mysteries with evidence-based deductions and a story-writing desk",
   "type": "module",
   "engines": { "node": ">=22" },
   "scripts": {

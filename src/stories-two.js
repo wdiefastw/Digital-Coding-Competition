@@ -1,3 +1,4 @@
+// Legacy first-edition cases retained for old-bookmark recovery; not part of the current collection.
 /** Five playable cases. Catalog text is spoiler-free; scene data is revealed through play. */
 export const storiesTwo = [
   {
