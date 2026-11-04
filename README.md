@@ -4,6 +4,15 @@ A cozy reading room for **ten complete, playable mysteries**, with a separate **
 
 Built with **HTML, CSS, and JavaScript**. No database, external libraries, API keys, or paid services are required. The stories, original SVG cover illustrations, and application assets are local files. Publish the site on GitHub Pages, Netlify, or another static host.
 
+## Download the project or publish the website
+
+- [Download the ready-to-publish website ZIP](https://github.com/wdiefastw/-/raw/refs/heads/main/downloads/PLOTLINE-website.zip). This contains the built website, including all ten stories and the writing desk.
+- [Download the complete source ZIP for VS Code](https://github.com/wdiefastw/-/archive/refs/heads/main.zip).
+
+To publish immediately, download the website ZIP, extract it, and drag the extracted folder containing `index.html` into [Netlify Drop](https://app.netlify.com/drop). Netlify supplies the live URL after upload. You can also use GitHub Pages as described below. No secret key or database is needed.
+
+The website ZIP is a prepared snapshot. After editing source files, run `npm run build` and publish the newly generated `dist/` folder so the live site contains your changes.
+
 ## Run in Visual Studio Code
 
 1. Install [Node.js 22 or later](https://nodejs.org/) and [Visual Studio Code](https://code.visualstudio.com/).
